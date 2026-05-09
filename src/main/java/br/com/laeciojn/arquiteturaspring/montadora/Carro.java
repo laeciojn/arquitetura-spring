@@ -8,11 +8,8 @@ public class Carro {
     private Motor motor;
     private Montadora montadora;
 
-    public Carro(String modelo, Color cor, Motor motor, Montadora montadora) {
-        this.modelo = modelo;
-        this.cor = cor;
+    public Carro(Motor motor) {
         this.motor = motor;
-        this.montadora = montadora;
     }
 
     public String getModelo() {
@@ -45,5 +42,12 @@ public class Carro {
 
     public void setMontadora(Montadora montadora) {
         this.montadora = montadora;
+    }
+
+    public CarroStatus darIgnicao(Chave chave) {
+        if (chave.getMontadora() != this.montadora){
+            return new CarroStatus("Não é possível iniciar o carro com esta chave");
+        }
+        return new CarroStatus("Carro ligado. Rodando com o motor " + motor);
     }
 }
